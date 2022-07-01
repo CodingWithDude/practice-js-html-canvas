@@ -1,6 +1,7 @@
 export class Player {
   constructor(game) {
     this.game = game;
+    this.keyBinds = game.keyBinds;
     this.width = 100;
     this.height = 91.3;
     this.x = 0;
@@ -14,14 +15,14 @@ export class Player {
   update(input) {
     // horizontal speed
     this.x += this.speed;
-    if (input.includes("ArrowRight")) this.speed = this.maxspeed;
-    else if (input.includes("ArrowLeft")) this.speed = -this.maxspeed;
+    if (input.includes(this.keyBinds.right)) this.speed = this.maxspeed;
+    else if (input.includes(this.keyBinds.left)) this.speed = -this.maxspeed;
     else this.speed = 0;
     if (this.x < 0) this.x = 0;
     if (this.x > this.game.width - this.width)
       this.x = this.game.width - this.width;
     // vertical speed
-    if (input.includes("ArrowUp") && this.onGround()) this.vy -= 20;
+    if (input.includes(this.keyBinds.up) && this.onGround()) this.vy -= 30;
     this.y += this.vy;
     if (!this.onGround()) this.vy += this.weight;
     else this.vy = 0;

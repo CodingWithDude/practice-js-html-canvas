@@ -1,13 +1,14 @@
 export class InputHandler {
-  constructor() {
+  constructor(input) {
     this.keys = [];
+    this.keyBinds = input.keyBinds;
     window.addEventListener("keydown", (e) => {
       if (
-        (e.key === "ArrowDown" ||
-          e.key === "ArrowUp" ||
-          e.key === "ArrowLeft" ||
-          e.key === "ArrowRight" ||
-          e.key === "Enter") &&
+        (e.key === this.keyBinds.down ||
+          e.key === this.keyBinds.up ||
+          e.key === this.keyBinds.left ||
+          e.key === this.keyBinds.right ||
+          e.key === this.keyBinds.enter) &&
         this.keys.indexOf(e.key) === -1
       ) {
         this.keys.push(e.key);
@@ -16,11 +17,11 @@ export class InputHandler {
     });
     window.addEventListener("keyup", (e) => {
       if (
-        e.key === "ArrowDown" ||
-        e.key === "ArrowUp" ||
-        e.key === "ArrowLeft" ||
-        e.key === "ArrowRight" ||
-        e.key === "Enter"
+        e.key === this.keyBinds.down ||
+        e.key === this.keyBinds.up ||
+        e.key === this.keyBinds.left ||
+        e.key === this.keyBinds.right ||
+        e.key === this.keyBinds.enter
       ) {
         this.keys.splice(this.keys.indexOf(e.key), 1);
       }

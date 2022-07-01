@@ -1,5 +1,6 @@
 import { Player } from "./player.js";
 import { InputHandler } from "./input.js";
+import { KeyBinds } from "./keyBinds.js";
 
 window.addEventListener("load", function () {
   const canvas = document.getElementById("canvas1");
@@ -11,8 +12,9 @@ window.addEventListener("load", function () {
     constructor(width, height) {
       this.width = width;
       this.height = height;
+      this.keyBinds = new KeyBinds();
       this.player = new Player(this);
-      this.input = new InputHandler();
+      this.input = new InputHandler(this);
     }
     update() {
       this.player.update(this.input.keys);

@@ -13,6 +13,7 @@ window.addEventListener("load", function () {
       this.width = width;
       this.height = height;
       this.keyBinds = new KeyBinds();
+      this.groundMargin = 50;
       this.player = new Player(this);
       this.input = new InputHandler(this);
     }

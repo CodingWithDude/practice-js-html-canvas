@@ -7,7 +7,7 @@ export class Player {
     this.width = 100;
     this.height = 91.3;
     this.x = 0;
-    this.y = this.game.height - this.height;
+    this.y = this.game.height - this.height - this.game.groundMargin;
     this.vy = 0; // vertical speed
     this.weight = 1;
     this.image = document.getElementById("player");
@@ -65,7 +65,7 @@ export class Player {
     );
   }
   onGround() {
-    return this.y >= this.game.height - this.height;
+    return this.y >= this.game.height - this.height - this.game.groundMargin;
   }
   setState(state) {
     this.currentState = this.states[state];
